@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+/* Custom styles */
+.paginator{
+  background: url('./assets/wallpaper.png');
+  width: 50%;
+  margin: 0 auto;
+  height: 150px;
+  & button{
+    color: red;
+  }
+}
