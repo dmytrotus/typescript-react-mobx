@@ -11,6 +11,7 @@ function Paginator() {
 	const Item = elements.map((el, id) => <Button
 		key={id}
 		name={el}
+		isActive={true}
 	 />)
 
 

@@ -5,7 +5,11 @@ function Button(props: any){
 
 	return(
 
-			<button>{props.name}</button>
+			<div className="button">
+				<button className={props.isActive ? "active" : ""}>
+				{props.name}
+				</button>
+			</div>
 		)
 }
 

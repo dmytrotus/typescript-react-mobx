@@ -38,11 +38,44 @@
 }
 /* Custom styles */
 .paginator{
-  background: url('./assets/wallpaper.png');
-  width: 50%;
-  margin: 0 auto;
-  height: 150px;
-  & button{
-    color: red;
+    background: url('./assets/wallpaper.png');
+    width: 100%;
+    margin: 0 auto;
+    height: 150px;
+    padding: 8px;
+  }
+.paginator .button{
+  margin: 10px;
+  border-radius: 25px;
+  border: 1px solid #1daae0;
+  box-shadow: 1px 1px 1px 1px #1daae0;
+  display: inline-block;
+  padding: 2px;
+}
+.paginator button{
+    font-size: 15px;
+    border-radius: 25px;
+    border: none;
+    padding: 8px;
+    text-transform: uppercase;
+    opacity: .8;
+    box-shadow: 1px 2px 7px #1d85de;
+    cursor: pointer;
+    background: transparent;
+    color: #1daae0;
+    font-weight: bold;
+  }
+.paginator button.active{
+  background: linear-gradient(#f6f637, #FFC107);
+  color: #143643;
+}
+@media (min-width: 700px) {
+  .paginator{
+    background: url('./assets/wallpaper.png');
+    width: 50%;
+    margin: 0 auto;
+    height: 150px;
+    padding: 10px;
+    font-size: 16px;
   }
 }
