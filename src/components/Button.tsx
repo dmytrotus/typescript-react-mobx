@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 
 interface CheckTypes {
@@ -13,13 +13,11 @@ interface CheckTypes {
 
 function Button( props:CheckTypes ){
 
-	const [state, setState] = useState({
-	    ActiveBtn: props.ActiveBtn
-  	});
+
 
 	//default active button
 	let isActive = '';
-	if(props.id === state.ActiveBtn)
+	if(props.id === props.ActiveBtn)
 		{
 			isActive = 'active';
 		}
