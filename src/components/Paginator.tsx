@@ -6,8 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
+import store from './Store';
+
 
 function Paginator() {
+
 
 	const elements = [ "all", "new", "popular", "keno", "table", "lottery"];
 
@@ -15,7 +18,7 @@ function Paginator() {
 		key={id}
 		id={id}
 		name={el}
-		ActiveBtn={1}
+		ActiveBtn={store.menuId[0]}
 	 />)
 
 

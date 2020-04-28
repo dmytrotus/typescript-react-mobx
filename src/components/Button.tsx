@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, { Component } from 'react';
+import { observer } from 'mobx-react';
 
 interface CheckTypes {
   id: number,
@@ -8,16 +8,20 @@ interface CheckTypes {
 
 }
 
-/*function Button(props:{id:number, name:string}){*/
+@observer
+export default class extends Component<CheckTypes>{
 
+	constructor(props:CheckTypes) {
+	    super(props)
+	}
 
-function Button( props:CheckTypes ){
+	render(){
 
-
+	console.log(this.props)
 
 	//default active button
 	let isActive = '';
-	if(props.id === props.ActiveBtn)
+	if(this.props.id === this.props.ActiveBtn)
 		{
 			isActive = 'active';
 		}
@@ -30,11 +34,11 @@ function Button( props:CheckTypes ){
 
 			<div className="button">
 				<button onClick={choose} className={isActive}>
-					{props.name}
+					{this.props.name}
 				</button>
 			</div>
 		)
+	}
 }
 
 
-export default Button;
