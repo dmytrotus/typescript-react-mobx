@@ -1,13 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function Button(props: any){
 
+interface CheckTypes {
+  id: number,
+  name: string,
+  ActiveBtn: number
+
+}
+
+/*function Button(props:{id:number, name:string}){*/
+
+
+function Button( props:CheckTypes ){
+
+	const [state, setState] = useState({
+	    ActiveBtn: props.ActiveBtn
+  	});
+
+	//default active button
+	let isActive = '';
+	if(props.id === state.ActiveBtn)
+		{
+			isActive = 'active';
+		}
+
+	const choose = () => {
+		console.log('choose')
+	}
 
 	return(
 
 			<div className="button">
-				<button className={props.isActive ? "active" : ""}>
-				{props.name}
+				<button onClick={choose} className={isActive}>
+					{props.name}
 				</button>
 			</div>
 		)

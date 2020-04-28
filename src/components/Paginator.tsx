@@ -2,6 +2,9 @@ import React from 'react';
 import { Fragment } from 'react';
 import '../App.css';
 import Button from './Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 
 function Paginator() {
@@ -10,17 +13,32 @@ function Paginator() {
 
 	const Item = elements.map((el, id) => <Button
 		key={id}
+		id={id}
 		name={el}
-		isActive={true}
+		ActiveBtn={1}
 	 />)
 
 
 	return(
 
 			<Fragment>
+			
 			<div className="paginator">
-			{Item}
+				<div className="wrapper">
+					<div className="button">
+						<button className="">
+						<FontAwesomeIcon icon={faChevronLeft} />
+						</button>
+					</div>
+					{Item}
+					<div className="button">
+						<button className="">
+						<FontAwesomeIcon icon={faChevronRight} />
+						</button>
+					</div>	
+				</div>
 			</div>
+			
 			</Fragment>
 		)
 }
