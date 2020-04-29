@@ -1,23 +1,17 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
+import store from './Store';
 
 interface CheckTypes {
   id: number,
   name: string,
-  ActiveBtn: number
-
+  ActiveBtn: any,
 }
 
 @observer
 export default class extends Component<CheckTypes>{
 
-	constructor(props:CheckTypes) {
-	    super(props)
-	}
-
 	render(){
-
-	console.log(this.props)
 
 	//default active button
 	let isActive = '';
@@ -26,14 +20,16 @@ export default class extends Component<CheckTypes>{
 			isActive = 'active';
 		}
 
-	const choose = () => {
-		console.log('choose')
+	const choose = (e: React.MouseEvent<HTMLButtonElement>, id: number) => {
+		console.log('choose' + id)
+		console.log(this.props)
+		store.changeStore(id)
 	}
 
 	return(
 
 			<div className="button">
-				<button onClick={choose} className={isActive}>
+				<button onClick={(e) => choose(e, this.props.id )} className={isActive}>
 					{this.props.name}
 				</button>
 			</div>

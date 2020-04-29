@@ -11,14 +11,13 @@ import store from './Store';
 
 function Paginator() {
 
-
 	const elements = [ "all", "new", "popular", "keno", "table", "lottery"];
 
 	const Item = elements.map((el, id) => <Button
 		key={id}
 		id={id}
 		name={el}
-		ActiveBtn={store.menuId[0]}
+		ActiveBtn={store.menuId}
 	 />)
 
 
