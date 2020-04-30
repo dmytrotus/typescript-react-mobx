@@ -6,7 +6,7 @@ interface CheckTypes {
   id: number,
   name: string,
   ActiveBtn: number,
-  PaginatorStore?: PaginatorStore;
+  PaginatorStore?: PaginatorStore
 }
 
 @inject("PaginatorStore")
