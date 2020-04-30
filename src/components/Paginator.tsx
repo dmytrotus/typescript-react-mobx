@@ -28,6 +28,22 @@ export default class Paginator extends Component<CheckTypes>{
 		ActiveBtn={this.props.PaginatorStore!.menuId}
 	 />)
 
+	const ClickLeft = () => {
+		let newVal = this.props.PaginatorStore!.menuId - 1;
+		if(newVal < 0){
+			newVal = 5;
+		}
+		this.props.PaginatorStore!.changeStore(newVal)
+	}
+
+	const ClickRight = () => {
+		let newVal = this.props.PaginatorStore!.menuId + 1;
+		if(newVal > 5){
+			newVal = 0;
+		}
+		this.props.PaginatorStore!.changeStore(newVal)
+	}
+
 	return(
 
 			<Fragment>
@@ -36,13 +52,13 @@ export default class Paginator extends Component<CheckTypes>{
 				<div className="wrapper">
 					<div className="button">
 						<button className="">
-						<FontAwesomeIcon icon={faChevronLeft} />
+						<FontAwesomeIcon onClick={ClickLeft} icon={faChevronLeft} />
 						</button>
 					</div>
 					{Item}
 					<div className="button">
 						<button className="">
-						<FontAwesomeIcon icon={faChevronRight} />
+						<FontAwesomeIcon onClick={ClickRight} icon={faChevronRight} />
 						</button>
 					</div>	
 				</div>
