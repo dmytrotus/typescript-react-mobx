@@ -12,16 +12,28 @@ interface CheckTypes {
   PaginatorStore?: PaginatorStore;
 }
 
+interface IState {
+  width?: number
+}
+
+
 @inject("PaginatorStore")
 @observer
 
-export default class Paginator extends Component<CheckTypes>{
+export default class Paginator extends Component<CheckTypes, IState>{
+
+	constructor(props: CheckTypes) {
+    	super(props);
+    	this.state = {
+    		width: window.innerWidth,
+    	};
+	}
 
 	render(){
 
 	const elements = [ "all", "new", "popular", "keno", "table", "lottery"];
 
-	const Item = elements.map((el, id) => <Button
+	const Item = elements.map((el, id) => <Button 
 		key={id}
 		id={id}
 		name={el}
@@ -44,19 +56,32 @@ export default class Paginator extends Component<CheckTypes>{
 		this.props.PaginatorStore!.changeStore(newVal)
 	}
 
+
+
+	const ShowWidth = () => {
+		const wrapper = document.getElementsByClassName('wrapper');
+		const wrapperWidth = Array.from( wrapper as HTMLCollectionOf<HTMLElement>)[0].offsetWidth;
+		//const displayWidth = window.innerWidth;
+		//this.setState({width:displayWidth});
+		//console.log(displayWidth)
+		console.log(this.state.width)
+
+	}
+	window.addEventListener("resize", ShowWidth);
+
 	return(
 
 			<Fragment>
 			
 			<div className="paginator">
-				<div className="wrapper">
-					<div className="button">
+				<div className="wrapper" style={{width: this.state.width}}>
+					<div className="button arrow">
 						<button className="">
 						<FontAwesomeIcon onClick={ClickLeft} icon={faChevronLeft} />
 						</button>
 					</div>
 					{Item}
-					<div className="button">
+					<div className="button arrow">
 						<button className="">
 						<FontAwesomeIcon onClick={ClickRight} icon={faChevronRight} />
 						</button>
