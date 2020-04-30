@@ -4,9 +4,14 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import { Provider } from "mobx-react";
+import { store } from './components/Store';
+
 ReactDOM.render(
   <React.StrictMode>
+  <Provider {...store}>
     <App />
+  </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

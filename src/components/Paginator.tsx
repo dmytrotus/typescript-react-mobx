@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Fragment } from 'react';
 import '../App.css';
 import Button from './Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { observer, inject } from "mobx-react";
+import { PaginatorStore } from './Store';
 
-import store from './Store';
+interface CheckTypes {
+  PaginatorStore?: PaginatorStore;
+}
 
+@inject("PaginatorStore")
+@observer
 
-function Paginator() {
+export default class Paginator extends Component<CheckTypes>{
+
+	render(){
 
 	const elements = [ "all", "new", "popular", "keno", "table", "lottery"];
 
@@ -17,9 +25,8 @@ function Paginator() {
 		key={id}
 		id={id}
 		name={el}
-		ActiveBtn={store.menuId}
+		ActiveBtn={this.props.PaginatorStore!.menuId}
 	 />)
-
 
 	return(
 
@@ -43,6 +50,5 @@ function Paginator() {
 			
 			</Fragment>
 		)
+	}
 }
-
-export default Paginator;

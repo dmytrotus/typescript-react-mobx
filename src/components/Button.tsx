@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
-import store from './Store';
+import { observer, inject } from 'mobx-react';
+import { PaginatorStore } from './Store';
 
 interface CheckTypes {
   id: number,
   name: string,
-  ActiveBtn: any,
+  ActiveBtn: number,
+  PaginatorStore?: PaginatorStore;
 }
 
+@inject("PaginatorStore")
 @observer
-export default class extends Component<CheckTypes>{
+export default class Button extends Component<CheckTypes>{
 
 	render(){
 
@@ -20,16 +22,15 @@ export default class extends Component<CheckTypes>{
 			isActive = 'active';
 		}
 
-	const choose = (e: React.MouseEvent<HTMLButtonElement>, id: number) => {
-		console.log('choose' + id)
-		console.log(this.props)
-		store.changeStore(id)
+	const choose = (id: number) => {
+		this.props.PaginatorStore!.changeStore(id)
 	}
+
 
 	return(
 
 			<div className="button">
-				<button onClick={(e) => choose(e, this.props.id )} className={isActive}>
+				<button onClick={() => choose( this.props.id )} className={isActive}>
 					{this.props.name}
 				</button>
 			</div>

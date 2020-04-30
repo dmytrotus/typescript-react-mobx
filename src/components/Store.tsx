@@ -1,16 +1,19 @@
 import { observable, action } from "mobx";
 
 
-class PaginatorStore{
+export class PaginatorStore{
 	@observable menuId = 0;
 
-
+	
 	@action changeStore(value:number) {
-		this.menuId = 124
+		this.menuId = value
 	}
 }
 
-const store = new PaginatorStore();
+interface IStore {
+  [key: string]: any;
+}
 
-export default store;
-
+export const store: IStore = {
+  PaginatorStore: new PaginatorStore(),
+};
